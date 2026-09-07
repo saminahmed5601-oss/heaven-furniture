@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #F8F6F0;
+  --color-ivory-soft: #F2EEE5;
+  --color-ivory-muted: #EAE4D8;
+  --color-ivory-border: #E8E4DA;
+
+  --color-charcoal-deep: #121B1C;
+  --color-charcoal-surface: #182425;
+  --color-charcoal-muted: #202F31;
+  --color-charcoal-border: #283C3E;
+
+  --color-champagne: #C8A97E;
+  --color-champagne-hover: #B8976C;
+  --color-champagne-light: #EBDDC8;
+  --color-champagne-muted: #9E825D;
+
+  --color-espresso: #1F1B18;
+  --color-espresso-text: #2C2622;
+  --color-espresso-muted: #595048;
+
+  --font-serif: var(--font-cormorant), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-bengali: var(--font-bengali), 'Noto Serif Bengali', serif;
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --bg-dark: #121B1C;
+  --bg-light: #F8F6F0;
+  --accent-champagne: #C8A97E;
+  --text-espresso: #1F1B18;
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Fallback smooth scrolling for native browsers & GPU touch performance */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  background-color: #F8F6F0;
+  color: #1F1B18;
+  font-family: var(--font-plus-jakarta), sans-serif;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: none;
+  touch-action: pan-y;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  html.lenis,
+  html.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  background-color: #F8F6F0;
+  color: #1F1B18;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hardware-accelerated compositing for fixed elements (promotes to dedicated GPU layer on Mali/Adreno GPUs) */
+header,
+[data-lenis-prevent] {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Scoped Hardware Acceleration & Fluid Micro-States */
+.btn-luxury {
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-luxury:hover {
+  transform: scale(1.02);
+  will-change: transform;
+}
+
+.btn-luxury:active {
+  transform: scale(0.98);
+  will-change: transform;
+}
+
+.card-luxury {
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 400ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-luxury:hover {
+  will-change: transform;
+}
+
+.link-luxury {
+  transition: color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-luxury:hover {
+  will-change: transform;
+}
+
+/* Modal hardware acceleration */
+.modal-accelerated {
+  will-change: transform, opacity;
+}
+
+::selection {
+  background-color: #C8A97E;
+  color: #121B1C;
+}
+
+/* Editorial subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #121B1C;
+}
+::-webkit-scrollbar-thumb {
+  background: #283C3E;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C8A97E;
+}
+
+/* Hide Next.js Dev Indicator Logo */
+nextjs-portal,
+[data-nextjs-dev-indicator],
+[data-nextjs-toast],
+div[data-nextjs-toast-wrapper] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Continuous Reviews Marquee Flow */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+
